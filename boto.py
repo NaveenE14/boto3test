@@ -11,7 +11,10 @@ video_file = st.file_uploader("Upload a video file", type=["mp4", "mov", "avi"])
 file_name = st.text_input("Enter the name of the file")
 
 # Initialize the S3 client
-s3 = boto3.client('s3')
+s3 = boto3.client('s3',
+                  region_name='us-east-1',  # Replace with your AWS region
+                  aws_access_key_id='YOUR_ACCESS_KEY_ID',
+                  aws_secret_access_key='YOUR_SECRET_ACCESS_KEY')
 
 # Upload the video to the specified S3 bucket
 if bucket_name and video_file and file_name:
